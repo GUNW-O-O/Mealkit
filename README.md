@@ -13,3 +13,7 @@
  - Next.js
  - TypeScript
  - Tailwind CSS
+---
+
+배포 주소
+https://mealkit-sooty.vercel.app/
