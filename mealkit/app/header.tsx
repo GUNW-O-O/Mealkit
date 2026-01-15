@@ -10,7 +10,7 @@ export default function Header() {
   }, [theme])
 
   return (
-    <header className="sticky top-0 z-10 bg-green-600 text-white">
+    <header className="sticky top-0 z-10 bg-emerald-400 text-gray-900">
       <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         <h1 className="text-base font-bold">척척밥상</h1>
 

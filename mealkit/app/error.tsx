@@ -24,7 +24,7 @@ export default function Error({ error, reset }: Props) {
 
       <button
         onClick={reset}
-        className="px-4 py-2 text-sm rounded bg-black text-white"
+        className="px-4 py-2 text-sm rounded bg-emerald-400 text-white hover:bg-emerald-600 transition-colors"
       >
         다시 시도
       </button>

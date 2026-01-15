@@ -18,7 +18,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
 
-        <footer className="bg-green-600 text-white">
+        <footer className="bg-emerald-400 text-gray-900">
           <div className="max-w-6xl mx-auto px-4 py-4 text-xs">
             척척밥상
           </div>

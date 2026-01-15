@@ -11,20 +11,21 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <div
-      className={`border rounded-lg p-3 flex flex-col gap-2 bg-emerald-600 
-      ${isSoldOut ? 'opacity-50' : ''} text-white`
+      className={`border rounded-lg p-3 flex flex-col gap-2 bg-emerald-200 
+      ${isSoldOut ? 'opacity-50' : ''} text-black`
     }
     >
       <SkeletonCard />
 
-      <h2 className="font-semibold text-sm">{product.name}</h2>
+      <h2 className="font-semibold text-l">{product.name}</h2>
       <p className="text-sm">{product.price}</p>
+      <p className="text-sm">공동구매 진행도 {progress}%</p>
 
       <ProgressBar value={progress} />
 
       <div className="flex justify-between text-xs text-gray-600">
         <span>
-          {product.current} / {product.limit}
+          재고 : {product.limit} / 주문 : {product.current}
         </span>
         {isSoldOut && <span className="text-red-500 font-bold">품절</span>}
       </div>
