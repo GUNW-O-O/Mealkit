@@ -1,9 +1,13 @@
-import { Product, ProductResponse } from './types/product'
+import { Product, ProductResponse, RegProduct } from './types/product'
 import ProductCard from './components/ProductCard'
 
 const API_URL = 'https://api.zeri.pics'
 
-async function getProducts(): Promise<Product[]> {
+const parsePrice = (price: string): number => {
+  return Number(price.replace(/[^0-9]/g, ''))
+}
+
+async function getProducts(): Promise<RegProduct[]> {
   const res = await fetch(API_URL, {
     next: { revalidate: 60 },
   })
@@ -17,9 +21,19 @@ async function getProducts(): Promise<Product[]> {
   // 0~49까지 오름차순으로 표시
   const sorted = [...data.content].sort((a, b) => a.index - b.index)
 
+  // 가격 정규화
+  const normalized: RegProduct[] = sorted.map(p => ({
+    index: p.index,
+    name: p.name,
+    price: parsePrice(p.price),
+    current: p.current,
+    limit: p.limit,
+    image: p.image,
+  }))
+  
   // 품절 필터링
-  const available = sorted.filter(p => p.current < p.limit)
-  const soldOut = sorted.filter(p => p.current === p.limit)
+  const available = normalized.filter(p => p.current < p.limit)
+  const soldOut = normalized.filter(p => p.current === p.limit)
 
   // 품절은 항상 하단
   return [...available, ...soldOut]
