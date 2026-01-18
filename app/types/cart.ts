@@ -4,6 +4,7 @@ export interface CartItem {
   price : number
   quantity : number
   limit : number
+  current : number
 }
 
 export interface Cart {

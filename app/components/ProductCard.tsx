@@ -41,6 +41,7 @@ export default function ProductCard({ product }: Props) {
         price: product.price,
         quantity: qty,
         limit: product.limit,
+        current : product.current
       }),
     })
 
@@ -64,9 +65,7 @@ export default function ProductCard({ product }: Props) {
       <ProgressBar value={progress} />
 
       <div className="flex justify-between text-xs text-gray-600">
-        <span>
-          재고 : {product.limit} / 주문 수 : {product.current}
-        </span>
+        <div></div>
         {isSoldOut ?
           (<span className="text-red-500 font-bold">품절</span>)
           :
@@ -96,7 +95,7 @@ export default function ProductCard({ product }: Props) {
                 className="px-2 rounded bg-emerald-600 text-white py-1
              hover:bg-emerald-700 disabled:opacity-40 items-center"
               >
-                장바구니 담기
+                담기
               </button>
               </div>
             </>
